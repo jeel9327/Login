@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Store - Product Detail</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Clothing Store</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+    <main id="app">
+        <section class="product-detail">
+            <div v-if="product">
+                <img :src="product.image" :alt="product.name">
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.description }}</p>
+                <p>{{ product.price | currency }}</p>
+                <button @click="addToCart(product)">Add to Cart</button>
+            </div>
+            <p v-else>Loading...</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Clothing Store</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

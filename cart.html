@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Store - Cart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Clothing Store</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+    <main id="app">
+        <section class="cart">
+            <h2>Your Cart</h2>
+            <div class="cart-item" v-for="item in cart" :key="item.id">
+                <img :src="item.image" :alt="item.name">
+                <h3>{{ item.name }}</h3>
+                <p>{{ item.price | currency }} x {{ item.quantity }}</p>
+                <button @click="removeFromCart(item)">Remove</button>
+            </div>
+            <p v-if="!cart.length">Your cart is empty.</p>
+            <p v-if="cart.length">Total: {{ totalPrice | currency }}</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Clothing Store</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
